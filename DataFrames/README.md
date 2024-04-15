@@ -1,52 +1,43 @@
-# Advanced Pandas - Functions
+# Advanced Pandas - Options
 
-## Top functions using Pandas 
+## Configuring options using pandas
 ```python
 # Import the pandas library and assign it the alias 'pd'
 import pandas as pd
 
-## Import CSV with pd.read_csv()
+# Create a new DataFrame 'emissions' containing information about 
+# CO2 emissions for different countries and years
+emissions = pd.DataFrame({
+    "country": ['China', 'United States', 'India'],
+    "year": ['2018', '2018', '2018'],
+    "co2_emissions": [10060000000.0, 5410000000.0, 2650000000.0]
+})
 
-# Read the CSV file 'iris.csv' located in the parent directory and create 
-# a DataFrame named 'iris_df'
-iris_df = pd.read_csv('../iris.csv')
+# Display the DataFrame 'emissions'
+emissions
 
-## Explore the data
+# Set the maximum number of rows to display to 2
+pd.set_option('display.max_rows', 2)
 
-# Output: The dimensions (number of rows, number of columns)
-# of the DataFrame 'iris_df'
-iris_df.shape
+# Display the DataFrame 'emissions'
+emissions
 
-# Display the first 3 rows of the DataFrame 'iris_df'
-iris_df.head(3)
+# Set the maximum number of columns to display to 2
+pd.set_option('display.max_columns', 2)
 
-# Display the last 3 rows of the DataFrame 'iris_df'
-iris_df.tail(3)
+# Display the DataFrame 'emissions'
+emissions
 
-## Datatypes
+# Set the floating-point formatting for displaying DataFrame floats to two decimal places
+# This ensures that floating-point numbers in the DataFrame are displayed with exactly two decimal places
 
-# Display the data types of each column in the DataFrame 'iris_df'
-iris_df.dtypes
+# '{:,.2f}': This part is a format string specifying how the floating-point number should be formatted. Here's what each part means:
+# {}: This indicates a placeholder for the value to be formatted.
+# ,: This part adds a comma as a thousands separator.
+# .2f: This specifies that the value should be formatted as a floating-point number with two decimal places.
+pd.options.display.float_format = '{:,.2f}'.format
 
-## Subsetting your data with loc & iloc
-
-# Select rows with index labels from 3 to 5 (inclusive) from 
-# the DataFrame 'iris_df'
-iris_df.loc[3:5]
-
-# Select the value in the 'sepal_length' column of the row with index
-# label 3 in the DataFrame 'iris_df'
-iris_df.loc[3, 'sepal_length']
-
-iris_df.iloc[3,0]
-
-# Select the value in the first column (index 0) of the 
-# fourth row (index 3) in the DataFrame 'iris_df'
-iris_df.iloc[3, 0]
-
-## Exporting your data as csv using to_csv
-
-# Export the DataFrame 'iris_df' to a CSV file named 'iris_output.csv' 
-# without including the index
-iris_df.to_csv('iris_output.csv', index=False)
+# Display the DataFrame 'emissions'
+# This will show the 'emissions' DataFrame with floating-point numbers formatted to two decimal places
+emissions
 ```
