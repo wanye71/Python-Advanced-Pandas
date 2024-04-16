@@ -269,6 +269,7 @@ pivot_df
 pivot_df = df.pivot_table(index='Team', columns='Region', values='Revenue')
 pivot_df
 ```
+[BACK TO TOP](#table-of-contents)
 
 ### Merging (merge, join) dataframes
 ```python
@@ -354,6 +355,7 @@ merged_df = df1.merge(df2, how='right', on='number', suffixes=('', '_right'))
 merged_df
 
 ```
+[BACK TO TOP](#table-of-contents)
 
 ### Concatenating (concat) dataframes
 ```python
@@ -535,6 +537,7 @@ join_df
 
 df2.join(join_df, rsuffix='_right')
 ```
+[BACK TO TOP](#table-of-contents)
 
 ### Mapping variables into groups
 ```python
