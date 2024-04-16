@@ -1,38 +1,65 @@
-# Advanced Pandas - Data type Conversions
+# Advanced Pandas - Working with strings using pandas
 
-## Data Types
+## Working with Strings
 ```python
 # Import the pandas library and assign it the alias 'pd'
 import pandas as pd
 
-# Read the CSV file 'planets.csv' located in the parent directory and create 
-# a DataFrame named 'planets_df'
-planets_df = pd.read_csv('../planets.csv')
+# Create a pandas Series 'names_df' containing strings representing names
+names_df = pd.Series(['Pomeray, CODY ', ' Wagner; Jarry', 'smith, Ray'])
 
-# Display the first 3 rows of the DataFrame ''
-planets_df.head(3)
+# Replace all occurrences of ';' with ',' in each string of the 'names_df' Series
+names_df = names_df.str.replace(';', ',')
 
-# Display the data types of each column in the DataFrame
-planets_df.dtypes
+# Display the modified Series 'names_df'
+names_df
 
-# Compute the mean values of numeric columns in the DataFrame 'planets_df'
-planets_df.mean(numeric_only=True)
+# Compute the length of each string in the 'names_df' Series
+names_df.str.len()
 
-# Calculate the ratio of the value in the 'number' column at index 0 to 
-# the value in the 'mass' column at index 0
-planets_df['number'][0] / planets_df['mass'][0]
+# Remove leading and trailing whitespace from each string in the 'names_df' Series
+names_df = names_df.str.strip()
 
-# Convert the value in the 'number' column at index 0 to a floating-point number
-planets_df['number'][0].astype(float)
+# Compute the length of each string in the 'names_df' Series after stripping whitespace
+names_df.str.len()
 
-# Convert the value in the 'mass' column at index 0 to an integer
-planets_df['mass'][0].astype(int)
+# Convert all strings in the 'names_df' Series to lowercase
+names_df = names_df.str.lower()
 
-# Convert the value in the 'year' column at index 0 to a string
-planets_df['year'][0].astype(str)
+# Display the modified Series 'names_df'
+names_df
 
-# Create a new column 'year_td' in the DataFrame 'planets_df' with datetime objects containing only the year component
-planets_df['year_td'] = pd.to_datetime(planets_df['year'], format='%Y')
-# Retrieve the values stored in the 'year_td' column of the DataFrame 'planets_df'
-planets_df['year_td']
+# Convert all strings in the 'names_df' Series to uppercase
+names_df = names_df.str.upper()
+
+# Display the modified Series 'names_df'
+names_df
+
+# Split each string in the 'names_df' Series by the ', ' delimiter
+names_df = names_df.str.split(', ')
+
+# Display the modified Series 'names_df'
+names_df
+
+# The output will be a Series of lists, 
+# where each list contains the parts of the original strings that were separated by ', 
+
+# Reverse each string in the lists contained within the 'names_df' Series 
+# and create a new Series
+names_df = pd.Series([i[::-1] for i in names_df])
+
+# Display the modified Series 'names_df'
+names_df
+
+# The output will be a new Series 
+# where each string in the original lists of 'names_df' is reversed.
+
+# Join the elements of each list within the 'names_df' Series into a single string separated by a space
+names_df = [' '.join(i) for i in names_df]
+
+# Display the modified Series 'names_df'
+names_df
+
+# The output will be a new Series where each list of strings 
+# in the original 'names_df' Series is joined into a single string.
 ```
