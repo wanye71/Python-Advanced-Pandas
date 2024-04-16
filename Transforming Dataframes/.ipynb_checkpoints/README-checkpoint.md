@@ -272,6 +272,86 @@ pivot_df
 
 ### Merging (merge, join) dataframes
 ```python
+# Alright, let's get started with our data journey! We're importing the pandas library, a powerful tool for data manipulation and analysis.
+# Think of pandas as our trusty guide, helping us navigate through the vast landscape of data with ease.
+
+import pandas as pd
+
+# Now that we have pandas by our side, let's embark on our data adventure! We're creating two DataFrames, df1 and df2,
+# each containing information about letters and their corresponding numbers.
+
+# Imagine df1 as a collection of letters A, B, C, and D, paired with their respective numbers 1, 2, 3, and 4.
+# It's like having a treasure map with clues leading us to hidden treasures represented by these letters and numbers.
+
+# Similarly, df2 holds another set of letters C, D, E, and F, along with their associated numbers 3, 4, 5, and 6.
+# It's as if we stumbled upon another map, revealing new treasures waiting to be discovered.
+
+df1 = pd.DataFrame({'letter':['A', 'B', 'C', 'D'],
+                   'number':[1,2,3,4],})
+
+df2 = pd.DataFrame({'letter':['C', 'D', 'E', 'F'],
+                   'number':[3,4,5,6],})
+
+## Left Join
+
+# Ah, it seems we've stumbled upon an intersection of our data maps! We're merging DataFrame df1 with df2,
+# using the 'number' column as our guide. This merge operation will help us uncover connections between the two datasets,
+# revealing shared treasures and uncovering new insights.
+
+# By specifying 'left' as the merging method, we're ensuring that all rows from df1 are retained,
+# with matching rows from df2 appended where available. It's like overlaying one map onto another,
+# allowing us to see where the treasures align and where they diverge.
+
+# The 'number' column serves as our key, guiding us through the merging process and helping us navigate the data landscape.
+# With each merge, we piece together the puzzle of our data story, unlocking hidden gems and revealing patterns.
+
+# The 'how' parameter determines the merging method. Here, we've chosen 'left', indicating that we want to retain all rows from df1,
+# even if there are no matching rows in df2.
+
+# The 'on' parameter specifies the column(s) to merge on. In our case, we're merging based on the 'number' column,
+# which acts as a common identifier between the two DataFrames.
+
+merged_df = df1.merge(df2, how='left', on='number')
+merged_df
+
+## Inner Join
+
+# It looks like we're diving deeper into the intersection of our data maps! We're merging DataFrame df1 with df2 once again,
+# but this time using an inner join to uncover only the shared treasures between the two datasets.
+
+# By specifying 'inner' as the merging method, we're focusing solely on the overlapping regions of our data maps,
+# where the treasures are shared between both datasets. It's like zooming in on a specific area of our maps,
+# where we expect to find common landmarks and hidden gems.
+
+# The 'left_on' and 'right_on' parameters allow us to specify the columns to merge on from each DataFrame.
+# Here, we're using 'number' as the key column from both df1 and df2, ensuring that we align the treasures correctly
+# and uncover meaningful connections between the two datasets.
+
+# As we embark on this inner journey, we anticipate discovering shared insights and uncovering hidden patterns
+# that will enrich our understanding of the data landscape.
+
+merged_df = df1.merge(df2, how='inner', left_on='number', right_on='number')
+merged_df
+
+## Right Join
+
+# Ah, it seems we're exploring a different path this time! We're merging DataFrame df1 with df2, but with a twist.
+# This time, we're using a right join to ensure that all rows from df2 are retained, even if there are no matching rows in df1.
+
+# By specifying 'right' as the merging method, we're prioritizing the rows from df2, ensuring that they all find a place in the merged DataFrame.
+# It's like extending an invitation to all the treasures on the right side of our map, ensuring they're not left behind.
+
+# The 'on' parameter specifies the column to merge on, and here we're using the 'number' column as our guide,
+# ensuring that the merging process aligns with the numeric keys in both datasets.
+
+# Additionally, we're using the 'suffixes' parameter to add a suffix to any overlapping column names between df1 and df2.
+# This helps us differentiate between columns from the left and right DataFrames, ensuring clarity and avoiding confusion.
+
+# As we merge df1 with df2 using a right join, we anticipate uncovering new insights and expanding our understanding
+# of the data landscape, with each row representing a unique treasure waiting to be discovered.
+
+merged_df = df1.merge(df2, how='right', on='number', suffixes=('', '_right'))
+merged_df
 
 ```
 
