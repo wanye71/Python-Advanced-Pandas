@@ -1,4 +1,4 @@
-# Advanced Pandas - Data type Conversions
+# Advanced Pandas - Advanced Calculations
 
 ## Data Types
 ```python

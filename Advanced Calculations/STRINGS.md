@@ -1,4 +1,4 @@
-# Advanced Pandas - Working with strings using pandas
+# Advanced Pandas - Advanced Calculations
 
 ## Working with Strings
 ```python
