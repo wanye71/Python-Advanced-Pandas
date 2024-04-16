@@ -541,5 +541,77 @@ df2.join(join_df, rsuffix='_right')
 
 ### Mapping variables into groups
 ```python
+# Ahoy, matey! We're about to add a splash of fishy status to our DataFrame 'df' with the help of the 'fish_status' dictionary.
+# It's like giving our finned friends their own underwater personalities!
 
+# Brace yourselves as we unveil the fishy status of our aquatic amigos:
+# - 'Chinook' and 'Steelhead' are swimming on the edge as 'Threatened', navigating the murky waters of endangerment.
+# - 'Chum' and 'Coho' can breathe easy, as they're deemed 'Not Warranted' for any fishy worries.
+
+# Hold onto your fishing nets as we dive into the code ocean and add this fishy status information to our DataFrame 'df'.
+# With a flick of the code wand, we're transforming data into fishy tales!
+
+# Here's how we're making waves:
+# - We've created a dictionary 'fish_status' mapping each fish species to its corresponding status.
+# - Using this dictionary, we're updating our DataFrame 'df' to include a new column 'Fish Status' with the fishy status for each species.
+
+# Let's unleash the aquatic drama as we reveal the updated DataFrame 'df' with its new 'Fish Status' column!
+fish_status = {
+    "Chinook": "Threatened",
+    "Chum": "Not Warranted",
+    "Coho": "Not Warranted",
+    "Steelhead": "Threatened"
+}
+
+# Adding the fishy status to our DataFrame 'df' with a new column 'Fish Status'
+df['Fish Status'] = df['Species'].map(fish_status)
+df
+
+## Introducing the categorical data type
+
+# Hold onto your fishing rods as we enhance the 'Count Category' column in our DataFrame 'df' with some ordered categorical magic!
+# It's like organizing our fishy friends into distinct swim lanes based on their numerical prowess.
+
+# Get ready to dive deep as we specify the order of our fishy categories:
+# - 'Low Return' to 'High Return' categories represent the swimming lanes for our fishy friends, arranged from least to most impressive.
+
+# With a sprinkle of code dust, we're transforming our 'Count Category' column into an ordered categorical delight!
+# It's like giving each fish a VIP pass to the swim lane of its performance level.
+
+# Here's how we're making waves:
+# - We're using the 'pd.Categorical' function to specify the 'Count Category' column as ordered, with custom category labels.
+# - By setting 'ordered=True' and providing custom 'categories', we're creating a swim lane hierarchy for our fishy friends.
+
+# Let's dive into the ordered categorical ocean and unveil the upgraded 'Count Category' column in our DataFrame 'df'!
+df['Count Category'] = pd.Categorical(df['Count Category'],
+                                     ordered=True, categories=labels)
+
+# Hold onto your hats, because here comes the upgraded 'Count Category' column with its ordered categorical goodness! 🎩🐟
+df['Count Category']
+
+# Get ready to make a splash as we sort our DataFrame 'df' based on the 'Count Category' column!
+# It's like organizing a fishy parade from the most impressive swimmers to the ones just getting their fins wet.
+
+# Hold onto your snorkel as we embark on this underwater adventure:
+# - We're using the 'sort_values' function to arrange our DataFrame based on the 'Count Category' column.
+# - By setting 'ascending=False', we're ensuring that the most impressive fishy performers swim to the top of the list.
+
+# Get ready to marvel at the organized chaos as we unveil the sorted DataFrame 'df'!
+df.sort_values(by=['Count Category'], ascending=False)
+
+#### Use get_dummies() to Convert a Categorical Variable into a Dummy Variable
+
+# Hold onto your fishing nets as we dive into the world of one-hot encoding with the 'get_dummies' function!
+# It's like casting a wide net to capture the categorical essence of our fishy 'Count Category' column.
+
+# Get ready to reel in some hot-encoded goodness as we unleash the power of pandas:
+# - We're using the 'get_dummies' function to transform the 'Count Category' column into one-hot encoded features.
+# - Each fishy category will become its own binary feature, ready to make a splash in our dataset.
+
+# Brace yourself for a tidal wave of binary features as we unravel the hot-encoded DataFrame!
+pd.get_dummies(df['Count Category'])
+
+n = int(input())
+for i in range(n):
+    print(i ** 2)
 ```
