@@ -119,5 +119,71 @@ scatter_matrix(iris, figsize=(15, 9));
 
 ### Correlations and statistical functions
 ```python
+# Time to dive into the world of pandas and numpy as we prepare for some inline plotting magic!
+# With pandas by our side, and numpy powering our calculations, we're ready to visualize our data inline.
 
+# Get ready to plot like a pro as we unleash the power of inline plotting:
+# - We're importing pandas as 'pd' and numpy as 'np' to harness their formidable data manipulation and numerical computing capabilities.
+# - By including '%matplotlib inline', we're activating inline plotting in Jupyter Notebook, allowing us to see our plots right below our code cells.
+
+# Hold onto your fishing rods as we cast our line into the data stream and explore the underwater world of inline plotting!
+import pandas as pd
+
+# Alright, time to dive into some data! Let's load up our trusty iris dataset into a DataFrame called 'iris'.
+iris = pd.read_csv('../iris.csv')
+iris.head(3)
+
+## Measures of Central Tendency
+
+# It's time for some mean calculations with pandas! We're diving into the numerical columns of our Iris dataset to find their mean.
+# The mean, also known as the average, gives us a sense of the central tendency of our data.
+# By setting the parameter 'numeric_only' to True, we ensure that only numeric columns are included in the calculation.
+iris.mean(numeric_only=True)
+
+# Let's call upon the magical powers of pandas to calculate the median of our Iris dataset!
+# The median is like the middleman of our data, dividing it into two equal parts.
+# We're specifically interested in numeric columns, so we'll set the parameter 'numeric_only' to True.
+iris.median(numeric_only=True)
+
+# Let's find the mode of our Iris dataset! The mode represents the most frequently occurring value(s) in each column.
+# It's like finding the most popular flower types or the most common sepal lengths and widths.
+# This function returns a DataFrame with the mode(s) for each column.
+iris.mode()
+
+## Variance Measures
+
+# Time to measure the spread of our Iris dataset with the standard deviation!
+# The standard deviation gives us a sense of how much the values in each column deviate from the mean.
+# It's like gauging the variability or dispersion of the data.
+# This function computes the standard deviation of the numeric columns in the DataFrame.
+iris.std(numeric_only=True)
+
+# Get ready to visualize the distribution of our Iris dataset with a box plot!
+# A box plot provides a visual summary of the distribution of the data, including its central tendency, spread, and any potential outliers.
+# Each box represents the interquartile range (IQR) of the data, with the median marked as a line inside the box.
+# The whiskers extend to the minimum and maximum values within 1.5 times the IQR from the first and third quartiles, respectively.
+# Any data points beyond the whiskers are considered outliers and are plotted individually.
+iris.boxplot();
+
+## Quick insights with describe()
+
+# Prepare for a detailed statistical summary of our Iris dataset!
+# The describe() function provides descriptive statistics for each numerical column in the DataFrame.
+# These statistics include count, mean, standard deviation, minimum, 25th percentile (Q1), median (50th percentile or Q2), 75th percentile (Q3), and maximum.
+# This summary allows us to quickly assess the central tendency, variability, and distribution of the data.
+iris.describe()
+
+## Relationship between variables
+
+# Let's dive into the correlation matrix of our Iris dataset!
+# The corr() function computes the pairwise correlation coefficients between numerical columns in the DataFrame.
+# This correlation matrix reveals how each numerical variable is related to others, ranging from -1 to 1.
+# A correlation of 1 indicates a perfect positive linear relationship, -1 indicates a perfect negative linear relationship, and 0 indicates no linear relationship.
+iris.corr(numeric_only=True)
+
+# Get ready for a splash of color as we add some style to our correlation matrix!
+# The background_gradient() function applies a gradient color scheme to the correlation matrix, making it visually appealing.
+# We're using the 'RdYlGn' colormap, which ranges from red to yellow to green, indicating negative, neutral, and positive correlations respectively.
+# The 'axis=None' parameter ensures that the gradient is applied to the entire matrix rather than just rows or columns.
+iris.corr(numeric_only=True).style.background_gradient(cmap='RdYlGn', axis=None)
 ```
